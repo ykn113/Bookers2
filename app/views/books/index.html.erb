@@ -39,11 +39,15 @@
           </thead>
           <tbody>
             <% @books.each do |book| %>
-            <tr>
-              <td><%= attachment_image_tag @user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg"%></td>
-              <td><%= book.title %></td>
-              <td><%= book.body %></td>
-            </tr>
+              <tr>
+                <td>
+                  <%= attachment_image_tag @user, :profile_image, size:"50x50", fallback: "no_image.jpg"%></br>
+                  <%= link_to users_path(book.user_id)%>
+                </td>
+                
+                <td><%= book.title %></td>
+                <td><%= book.body %></td>
+              </tr>
             <% end %>
           </tbody>
 
