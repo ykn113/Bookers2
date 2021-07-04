@@ -1,9 +1,23 @@
 <h1>Books#edit</h1>
 <p>Find me in app/views/books/edit.html.erb</p>
+
+  
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <h1>Editing Book</h1>
+      <div class="errors">
+        <% if @book.errors.any? %>
+          <h3><%= @book.errors.count %> error prohibited this obj from being saved:</h3>
+          <ul>
+            <li>
+              <% @book.errors.full_messages.each do |message| %>
+                <%= message %>
+              <% end %>
+            </li>
+          </ul>
+        <% end %>
+      </div>
       <%= form_with model:@book, url:book_path(@book), method: :patch, local:true do |f| %>
         <p>Title</p>
         <%= f.text_field :title %>
