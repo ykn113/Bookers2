@@ -13,7 +13,7 @@
       <table class="table">
         <tr>
           <td>
-            <%= attachment_image_tag @user, :profile_image, size:"50x50", fallback: "no_image.jpg"%></br>
+            <%= attachment_image_tag @book.user, :profile_image, size:"50x50", fallback: "no_image.jpg"%></br>
             <%= link_to @book.user.name, user_path(params[:id]) %>
           </td>
           <td><%= link_to @book.title, book_path(params[:id]) %></td>
@@ -24,7 +24,7 @@
             <% end %>
           <td>
             <% if @book.user==current_user %>
-                <%= link_to "Destroy", book_path(@book),method: :delete, class:"btn btn-sm btn-danger" %>
+                <%= link_to "Destroy", book_path(@book),method: :delete, class:"btn btn-sm btn-danger", "data-confirm" =>"本当に消しますか?" %>
             <% end %>
           </td>
         </tr>
