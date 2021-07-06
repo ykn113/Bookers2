@@ -19,7 +19,6 @@ class BooksController < ApplicationController
     @user = User.find(current_user.id)
     @books = Book.all
     @book = Book.new(book_params)
-    # ↓user_idというbookテーブルの中のカラム
     @book.user_id = current_user.id
     if @book.save
       redirect_to book_path(@book.id), notice:'You have created book successfully.'
@@ -30,7 +29,6 @@ class BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
-    # ↓associationが影響している bookモデルの中のuser id
     if @book.user.id == current_user.id
       render :edit
     else
@@ -39,8 +37,6 @@ class BooksController < ApplicationController
   end
 
   def update
-    @user = User.find(current_user.id)
-    @books = Book.all
     @book = Book.find(params[:id])
     if @book.update(book_params)
       redirect_to book_path(@book.id), notice:'You have updated book successfully.'
