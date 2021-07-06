@@ -1,10 +1,7 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
-
-<div class="container">
+<div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3">
-       <%= render 'users/user_info', user: @user %>
+       <%= render 'users/user_info', user: @book.user %>
        <%= render 'books/new_book', book: @newbook %>
      </div>
      
@@ -13,8 +10,10 @@
       <table class="table">
         <tr>
           <td>
+            <%= link_to user_path(@book.user_id) do %>
             <%= attachment_image_tag @book.user, :profile_image, size:"50x50", fallback: "no_image.jpg"%></br>
-            <%= link_to @book.user.name, user_path(params[:id]) %>
+            <%= @book.user.name %>
+            <% end %>
           </td>
           <td><%= link_to @book.title, book_path(params[:id]) %></td>
           <td><%= @book.body %></td>
