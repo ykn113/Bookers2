@@ -1,4 +1,3 @@
 $("#comment_count<%= @book.id %>").html("コメント数: <%= @book.book_comments.count %>");
-
 $("#comments").html("<%= j(render partial: 'book_comments/comments', locals: {book: @book}) %>");
 $("textarea").val('')
