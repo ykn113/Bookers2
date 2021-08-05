@@ -27,4 +27,12 @@ class Book < ApplicationRecord
     end
   end
   
+  validates :rate, presence: true
+  validates :rate, numericality: {
+    # only_integer: true,
+    less_than_or_equal_to: 3,
+    greater_than_or_equal_to: 1,
+  }
+  
+  
 end

@@ -32,6 +32,22 @@
                 <%= link_to "Destroy", book_path(@book),method: :delete, class:"btn btn-sm btn-danger", "data-confirm" =>"本当に消しますか?" %>
             <% end %>
           </td>
+          <td>
+           <div id="star-rate-<%= note.id %>"></div>
+            <script>
+              // 繰り返し処理でもidをidを一意にできるようにnote_idを入れる
+            $('#star-rate-<%= note.id %>').raty({
+              size: 36,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              half: true,
+              // 読み込みだけで入力できない
+              readOnly: true,
+              score: <%= note.rate %>,
+            });
+            </script>
+          </td>
         </tr>
       </table>
 
