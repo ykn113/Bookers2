@@ -27,6 +27,8 @@
               <th>Title</th>
               <th>Opinion</th>
               <th></th>
+              <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -44,18 +46,18 @@
                 </td>
                 <td><p>コメント数:<%= book.book_comments.count %></p></td>
                 <td>
-                  <div id="star-rate-<%= @book.id %>"></div>
-                    <script>
-                    $('#star-rate-<%= @book.id %>').raty({
-                      size: 36,
-                      starOff:  '<%= asset_path('star-off.png') %>',
-                      starOn : '<%= asset_path('star-on.png') %>',
-                      starHalf: '<%= asset_path('star-half.png') %>',
-                      half: true,
-                      readOnly: true,
-                      score: <%= @book.rate %>,
-                    });
-                    </script>
+                 <div id="star-rate<%= book.id %>"></div>
+                  <script>
+                  $('#star-rate<%= book.id %>').raty({
+                    size: 36,
+                    starOff:  '<%= asset_path('star-off.png') %>',
+                    starOn : '<%= asset_path('star-on.png') %>',
+                    starHalf: '<%= asset_path('star-half.png') %>',
+                    half: true,
+                    readOnly: true,
+                    score: <%= book.rate %>,
+                  });
+                  </script>
                 </td>
               </tr>
             <% end %>

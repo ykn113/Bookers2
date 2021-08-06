@@ -5,19 +5,20 @@
     <p>Opinion</p>
     <%= f.text_area :body%>
     <!--星評価-->
-    <div class="form-group row" id="star">
-      <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
-      <%= f.hidden_field :rate, id: :review_star %>
+    <div id="star" class="form-group">
+      <%= f.label :Rate %>
+      <%= f.hidden_field :rate, class:"form-control" %>
     </div>
-    <script>
-    $('#star').raty({
-      size     : 36,
-      starOff:  '<%= asset_path('star-off.png') %>',
-      starOn : '<%= asset_path('star-on.png') %>',
-      starHalf: '<%= asset_path('star-half.png') %>',
-      scoreName: 'books[rate]',
-      half: true,
-    });
-    </script>
+      <script>
+        $('#star').raty({
+          size     : 36,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn :  '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          scoreName: 'book[rate]', <%#Bookモデルのrateカラムに保存%>
+          half: true,
+        });
+      </script>
+    <!--星評価-->
     <%= f.submit 'Create Book', class:"btn btn-success" %>
   <% end %>
