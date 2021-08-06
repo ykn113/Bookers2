@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
   def index
     @user = User.find(current_user.id)
-    @books = Book.all
+    @books = Book.all.order(params[:sort])
     @book = Book.new
   end
 
