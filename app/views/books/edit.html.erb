@@ -19,6 +19,8 @@
         <%= f.text_field :title %>
         <p>Opinion</p>
         <%= f.text_area :body %></br>
+        <p>Category</p>
+        <%= f.text_field :category %>
         <div id="star-rate<%= @book.id %>"></div>
         <script>
           $('#star-rate<%= @book.id %>').raty({
@@ -36,7 +38,6 @@
           <%= link_to "Show", book_path(params[:id]) %>
           <%= link_to "Back", books_path %>
         </div>
-        
       <% end %>
     </div>
   </div>

@@ -8,7 +8,7 @@ class Book < ApplicationRecord
     less_than_or_equal_to: 5,
     greater_than_or_equal_to: 1
   }
-
+  validates :category, presence: true
   
   has_many :favorites, dependent: :destroy
   
@@ -30,6 +30,10 @@ class Book < ApplicationRecord
     else
       @book = Book.all
     end
+  end
+  
+  def self.book_search(search_word)
+    Book.where(['category LIKE ?', "%#{search_word}%"])
   end
   
 end

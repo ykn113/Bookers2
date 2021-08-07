@@ -35,6 +35,12 @@
               <li>
                 <%= link_to "logout", destroy_user_session_path, method: :delete, class:'fas fa-sign-out-alt nav-link text-light' %>
               </li>
+              <li>
+                <%= form_with url: book_search_path, method: :get, local: true do |form| %>
+                  <%= form.text_field :keyword %>
+                  <%= form.submit '検索', name: nil, class:"btn btn-primary"%>
+                <% end %>
+              </li>
               <% else %>
               <li>
                 <%= link_to "Home", root_path, class:'fas fa-home nav-link text-light' %>
@@ -54,7 +60,7 @@
         </div>
       </nav>
     </header>
-    
+
     <!--検索機能-->
     <div class="col-12 text-center my-3">
       <div class="search-form">
@@ -66,18 +72,18 @@
             <%= submit_tag "検索" %>
           <% end %>
         <% end %>
-      </div>  
+      </div>
     </div>
- 
+
  <!--flash Message-->
     <% flash.each do |key, value| %>
       <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>
-    
+
     <%= yield %>
     <script src="/js/jquery.min.js"></script>
     <script src="/js/jquery.raty.js"></script>
-    
+
     <footer>
       <div class="container mt-5">
         <div class="row">
