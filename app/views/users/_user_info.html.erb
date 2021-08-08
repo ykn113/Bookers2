@@ -21,7 +21,9 @@
       <th><%= render 'relationships/follow_button', user: user %></th>
       <th>
         <% if current_user != @user %>
-          <%= link_to 'chatを始める', chat_path(@user.id)%>
+          <% if current_user.following?(user) %>
+            <%= link_to 'chatを始める', chat_path(@user.id)%>
+          <% end %>
         <% end %>
       </th>
       <th></th>
