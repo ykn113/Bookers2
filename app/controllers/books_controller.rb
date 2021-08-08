@@ -1,7 +1,8 @@
 class BooksController < ApplicationController
   def index
     @user = User.find(current_user.id)
-    @books = Book.all.order(params[:sort])
+    @books = Book.includes(:favorited_users).sort{|a,b| b.favorited_users.size <=> a.favorited_users.size}
+    # all.order(params[:sort])
     @book = Book.new
   end
 

@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :books,dependent: :destroy
   attachment :profile_image
   has_many :favorites, dependent: :destroy
+  has_many :favorited_users, through: :favorites, source: :post
   has_many :book_comments, dependent: :destroy
   
   validates :name, uniqueness: true, length: {in: 2..20}
