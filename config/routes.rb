@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get 'home/about' =>'homes#about'
   get "book_search" => "homes#book_search"
+  get 'chat/:id' => 'chats#show', as: 'chat'
+  resources :chats, only: [:create]
   
   devise_for :users
   resources :books, only: [:index, :show, :edit, :update, :create, :destroy] do
