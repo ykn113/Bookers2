@@ -1,4 +1,5 @@
 class Book < ApplicationRecord
+  is_impressionable 
 
   belongs_to :user
 
@@ -13,7 +14,7 @@ class Book < ApplicationRecord
   has_many :favorites, dependent: :destroy
   # 7a追加
   has_many :favorited_users, through: :favorites, source: :user
-  # ここまで
+  
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end

@@ -38,6 +38,7 @@
             });
             </script>
           </td>
+           <td>閲覧数：<%= @book.impressionist_count %></td>
           <td>
             <% if @book.user==current_user %>
               <%= link_to "Edit", edit_book_path, class:"btn btn-sm btn-success" %></td>
@@ -47,7 +48,6 @@
                 <%= link_to "Destroy", book_path(@book),method: :delete, class:"btn btn-sm btn-danger", "data-confirm" =>"本当に消しますか?" %>
             <% end %>
           </td>
-          
         </tr>
       </table>
 
