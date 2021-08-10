@@ -128,7 +128,9 @@
             </tbody>
           </table>
         </div>
-        <%= line_chart @books.group_by_day(:created_at).count %>
+        <div class = "chart">
+          <%= line_chart @books.group_by_day(:created_at).count %>
+        </div>
     </div>
   </div>
 </div>
