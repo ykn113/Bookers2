@@ -24,6 +24,7 @@ class BooksController < ApplicationController
   #       a.favorited_users.includes(:favorites).where(created_at: from...to).size
   #     }
   # end
+  
 
   def show
     @book = Book.find(params[:id])
